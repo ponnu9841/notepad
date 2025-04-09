@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import { useColorScheme } from "@/hooks/useColorScheme";
@@ -10,10 +9,9 @@ import {
    NavigationContainer,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ThemedView } from "@/components/ThemedView";
 import { useEffect } from "react";
-import { ThemedText } from "@/components/ThemedText";
 import HomeScreen from "@/screens/HomeScreen";
+import "./global.css"
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

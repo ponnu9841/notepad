@@ -3,6 +3,6 @@ import { Text, View } from 'react-native'
 
 export default function HomeScreen() {
   return (
-    <Text>HomeScreen</Text>
+    <Text className='text-3xl'>HomeScreen</Text>
   )
 }
