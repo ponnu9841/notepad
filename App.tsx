@@ -15,7 +15,6 @@ import { PortalHost } from "@rn-primitives/portal";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import HomeScreen from "@/screens/HomeScreen";
 import NoteScreen from "@/screens/NoteScreen";
-import NoteAddButton from "@/components/NoteAddButton";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
 import { NAV_THEME } from "@/lib/constants";
@@ -79,7 +78,6 @@ export default function App() {
                      name="Home"
                      options={{
                         headerTitle: "All Notes",
-                        headerRight: () => <NoteAddButton />,
                      }}
                      component={HomeScreen}
                   />

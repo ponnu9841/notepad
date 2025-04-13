@@ -4,13 +4,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState: {
   loading: boolean;
   notes: Note[] | null;
-  currentNote: null;
+  currentNote: Note | null;
+  title: string;
+  content: string;
   error: any; //eslint-disable-line
 } = {
   loading: true,
   notes: [],
   error: "",
   currentNote: null,
+  title: "",
+  content: "",
 };
 
 export const fetchNotes = createAsyncThunk(
@@ -22,9 +26,19 @@ export const fetchNotes = createAsyncThunk(
 );
 
 export const NoteSlice = createSlice({
-  name: "contact",
+  name: "notes",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentNote: (state, action) => {
+      state.currentNote = action.payload;
+    },
+    setTitle: (state, action) => {
+      state.title = action.payload;
+    },
+    setContent: (state, action) => {
+      state.content = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(fetchNotes.pending, (state) => {
@@ -42,4 +56,5 @@ export const NoteSlice = createSlice({
   },
 });
 
+export const { setCurrentNote, setTitle, setContent } = NoteSlice.actions;
 export default NoteSlice.reducer;
