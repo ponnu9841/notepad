@@ -16,21 +16,23 @@ export const getNoteById = async (id: string) => {
    return notes.find((note) => note.id === id);
 };
 
-export const saveNote = async (content: string) => {
+export const saveNote = async (content: string, title: string) => {
    const notes = await getAllNotes();
    notes.push({
       id: Date.now().toString(),
+      title,
       content,
    });
    await saveNotesToStore(notes);
 };
 
-export const editNote = async (id: string, content: string) => {
+export const editNote = async (id: string, content: string, title: string) => {
    const notes = await getAllNotes();
    const index = notes.findIndex((note) => note.id === id);
    //    notes[index].content = content;
    notes.splice(index, 1, {
       id,
+      title,
       content,
    });
    await saveNotesToStore(notes);

@@ -11,35 +11,36 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import { Trash } from "@/lib/icons/Trash";
 
-export default function Dialog({
+export default function DeleteDialog({
    buttonText = "Show Alert Dialog",
    title,
    description,
    onConfirm,
-}: {
-   buttonText?: string;
-   title: string;
-   description: string;
-   onConfirm: () => void;
-}) {
+   triggerButtonVariant = "outline",
+   triggerButtonSize = "default",
+}: DialogProps) {
    return (
       <AlertDialog>
          <AlertDialogTrigger asChild>
-            <Button variant="outline">
-               <Text>{buttonText}</Text>
+            <Button variant="destructive" size="icon" className="p-3">
+               <Trash size={20} className="text-white" />
             </Button>
          </AlertDialogTrigger>
          <AlertDialogContent>
             <AlertDialogHeader>
-               <AlertDialogTitle>{title}</AlertDialogTitle>
+               <AlertDialogTitle numberOfLines={1}>{title}</AlertDialogTitle>
                <AlertDialogDescription>{description}</AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter>
-               <AlertDialogCancel>
+            <AlertDialogFooter className="flex-row justify-between gap-4">
+               <AlertDialogCancel className="flex-1">
                   <Text>Cancel</Text>
                </AlertDialogCancel>
-               <AlertDialogAction onPress={() => onConfirm()}>
+               <AlertDialogAction
+                  onPress={() => onConfirm()}
+                  className="flex-1 py-0"
+               >
                   <Text>Continue</Text>
                </AlertDialogAction>
             </AlertDialogFooter>
